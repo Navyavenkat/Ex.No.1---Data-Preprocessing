@@ -32,10 +32,76 @@ Normalizing the data
 Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
+```
 
+
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+
+df=pd.read_csv('Churn_Modelling.csv')
+df
+
+
+df.isnull().sum()
+
+
+df.duplicated()
+
+
+df.drop('RowNumber',axis=1,inplace=True)
+df.drop('CustomerId',axis=1,inplace=True)
+df.drop('Age',axis=1,inplace=True)
+df.drop('Gender',axis=1,inplace=True)
+df.drop('Surname',axis=1,inplace=True)
+df.drop('Geography',axis=1,inplace=True)
+df
+
+
+ms=MinMaxScaler()
+df2=pd.DataFrame(ms.fit_transform(df))
+df2
+
+
+X=df2.iloc[:,:-1].values
+X
+
+
+y=df2.iloc[:,-1].values
+y
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+print(X_train)
+print("X_train: ",len(X_train))
+print(X_test)
+print("Size of X_test: ",len(X_test))
+
+```
 ## OUTPUT:
-/ Show the result/
+
+![GITHUB LOGO](nx.JPG)
+
+![GITHUB LOGO](nx1.JPG)
+
+![GITHUB LOGO](nx2.JPG)
+
+![GITHUB LOGO](nx3.JPG)
+
+![GITHUB LOGO](nx4.JPG)
+
+![GITHUB LOGO](nx5.JPG)
+
+![GITHUB LOGO](nx6.JPG)
+
+![GITHUB LOGO](nx7.JPG)
+
+
+
 
 ## RESULT
-/Type your result here/
+
+Hence Data is preprocessed successfully.
